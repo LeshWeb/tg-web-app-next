@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <>
-      <h1 className="text-tg">Started!</h1>
+      <h1 className="text-tg">Начать</h1>
       <button onClick={() => postEvent("web_app_close", {})}>Закрыть</button>
     </>
   );
