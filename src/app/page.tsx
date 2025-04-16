@@ -2,11 +2,10 @@
 
 import { miniApp, postEvent } from "@telegram-apps/sdk-react";
 import { useEffect } from "react";
+import { useTelegramMiniApp } from './hooks/useTelegramMiniApps';
 
 export default function Home() {
-  useEffect(() => {
-    miniApp.ready();
-  });
+ useTelegramMiniApp();
 
   return (
     <>
