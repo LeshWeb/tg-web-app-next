@@ -1,3 +1,4 @@
+"use client";
 import { isTMA } from "@telegram-apps/sdk";
 
 export function isTMAUsername() {
