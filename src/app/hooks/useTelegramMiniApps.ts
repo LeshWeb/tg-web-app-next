@@ -1,6 +1,5 @@
-import { miniApp } from '@telegram-apps/sdk-react';
-import { useEffect } from 'react';
-
+import { miniApp } from "@telegram-apps/sdk-react";
+import { useEffect } from "react";
 
 export function useTelegramMiniApp() {
   useEffect(() => {
