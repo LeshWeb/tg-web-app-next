@@ -11,6 +11,8 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-tg: var(--tg-theme-bg-color);
+  --color-tg-btn: var(--tg-theme-button-color);
+  --color-tg-text-btn: var(--tg-theme-button-text-color);
 }
 
 @media (prefers-color-scheme: dark) {
