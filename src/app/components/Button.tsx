@@ -7,7 +7,7 @@ interface ButtonProps extends HTMLAttributes<HTMLDivElement> {
 export function Button({ className, ...props }: ButtonProps) {
   return (
     <div {...props} className={className}>
-      Button
+      Закрыть
     </div>
   );
 }
