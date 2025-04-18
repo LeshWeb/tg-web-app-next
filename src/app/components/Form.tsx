@@ -40,7 +40,6 @@ export function Form() {
     if (tg) {
       tg.onEvent("mainButtonClicked", onSendData);
     }
-    return tg?.offEvent("mainButtonClicked", onSendData);
   }, [tg]);
 
   useEffect(() => {
