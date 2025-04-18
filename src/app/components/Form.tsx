@@ -31,6 +31,8 @@ export function Form() {
     if (!tg) {
       console.log("Telegram не инициализирован");
     } else {
+      console.log("tg:", tg);
+      console.log("Отправка данных", JSON.stringify(data));
       tg.sendData(JSON.stringify(data));
       console.log("Отправка данных", JSON.stringify(data));
     }
