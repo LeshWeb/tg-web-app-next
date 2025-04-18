@@ -33,6 +33,8 @@ export function Form() {
         data: JSON.stringify({ country, street, subject }),
       });
       sendData(JSON.stringify({ country, street, subject }));
+      setCountry("");
+      setStreet("");
     }
   }, [tg, country, street, subject]);
 
