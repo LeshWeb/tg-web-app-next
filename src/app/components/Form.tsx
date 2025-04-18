@@ -21,7 +21,7 @@ export function Form() {
     setSubject(e.target.value);
   };
 
-  const onSendData = useCallback(() => {
+  const onSendData = () => {
     const data = {
       country,
       street,
@@ -34,7 +34,7 @@ export function Form() {
     // Очистка полей
     setCountry("");
     setStreet("");
-  }, [country, street, subject]);
+  };
 
   useEffect(() => {
     if (!tg) return;
