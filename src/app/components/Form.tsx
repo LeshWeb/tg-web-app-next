@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useTelegram } from "../hooks/useTelegram";
-import { sendData } from "@telegram-apps/sdk";
+import { postEvent, sendData } from "@telegram-apps/sdk";
 
 export function Form() {
   const [country, setCountry] = useState("");
@@ -29,7 +29,7 @@ export function Form() {
     };
 
     // ТОЛЬКО sendData - postEvent не нужен
-    sendData(JSON.stringify(data));
+    postEvent("web_app_data_send", { data: JSON.stringify(data) });
 
     // Очистка полей
     setCountry("");
