@@ -1,5 +1,5 @@
 "use client";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTelegram } from "../hooks/useTelegram";
 
 export function Form() {
