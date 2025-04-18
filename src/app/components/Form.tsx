@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTelegram } from "../hooks/useTelegram";
 
 export function Form() {
@@ -26,8 +26,21 @@ export function Form() {
     }
   }, [tg]);
 
+  const onSendData = useCallback(() => {
+    if (tg) {
+      tg.sendData(JSON.stringify({ country, street, subject }));
+    }
+  }, [tg, country, street, subject]);
+
   useEffect(() => {
-    if (tg && !street && !country) {
+    if (tg) {
+      tg.onEvent("mainButtonClicked", onSendData);
+    }
+    return tg?.offEvent("mainButtonClicked", onSendData);
+  }, [tg]);
+
+  useEffect(() => {
+    if (tg && (!street || !country)) {
       tg.MainButton.hide();
     } else if (tg) {
       tg.MainButton.show();
