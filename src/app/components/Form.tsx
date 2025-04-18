@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useTelegram } from "../hooks/useTelegram";
-import { postEvent } from "@telegram-apps/sdk";
 
 export function Form() {
   const [country, setCountry] = useState("");
