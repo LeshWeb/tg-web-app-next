@@ -24,7 +24,7 @@ export function Form() {
     if (tg) {
       tg.MainButton.setParams({ text: "Отправить данные" });
     }
-  }, []);
+  }, [tg]);
 
   useEffect(() => {
     if (tg && !street && !country) {
@@ -32,7 +32,7 @@ export function Form() {
     } else if (tg) {
       tg.MainButton.show();
     }
-  }, []);
+  }, [tg, street, country]);
 
   return (
     <div className="flex flex-col w-full p-5">
