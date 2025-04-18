@@ -29,8 +29,12 @@ export function Form() {
     };
 
     // ТОЛЬКО sendData - postEvent не нужен
-    postEvent("web_app_data_send", { data: JSON.stringify(data) });
-    console.log("Отправка данных", JSON.stringify(data));
+    if (!tg) {
+      console.log("Telegram не инициализирован");
+    } else {
+      tg.sendData(JSON.stringify(data));
+      console.log("Отправка данных", JSON.stringify(data));
+    }
 
     // Очистка полей
     setCountry("");
