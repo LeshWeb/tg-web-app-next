@@ -28,14 +28,12 @@ export function Form() {
   }, [tg]);
 
   const onSendData = useCallback(() => {
-    if (tg && sendData.isAvailable()) {
-      postEvent("web_app_data_send", {
-        data: JSON.stringify({ country, street, subject }),
-      });
-      sendData(JSON.stringify({ country, street, subject }));
-      setCountry("");
-      setStreet("");
-    }
+    postEvent("web_app_data_send", {
+      data: JSON.stringify({ country, street, subject }),
+    });
+    sendData(JSON.stringify({ country, street, subject }));
+    setCountry("");
+    setStreet("");
   }, [tg, country, street, subject]);
 
   useEffect(() => {
