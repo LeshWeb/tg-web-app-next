@@ -29,12 +29,9 @@ export function Form() {
 
     // ТОЛЬКО sendData - postEvent не нужен
     if (!tg) {
-      console.log("Telegram не инициализирован");
+      return;
     } else {
-      console.log("tg:", tg);
-      console.log("Отправка данных", JSON.stringify(data));
       tg.sendData(JSON.stringify(data));
-      console.log("Отправка данных", JSON.stringify(data));
     }
 
     // Очистка полей
