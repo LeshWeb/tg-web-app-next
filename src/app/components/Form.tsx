@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTelegram } from "../hooks/useTelegram";
 import { sendData } from "@telegram-apps/sdk";
 
