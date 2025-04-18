@@ -1,6 +1,7 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { useTelegram } from "../hooks/useTelegram";
+import { sendData } from "@telegram-apps/sdk";
 
 export function Form() {
   const [country, setCountry] = useState("");
@@ -27,8 +28,8 @@ export function Form() {
   }, [tg]);
 
   const onSendData = useCallback(() => {
-    if (tg) {
-      tg.sendData(JSON.stringify({ country, street, subject }));
+    if (tg && sendData.isAvailable()) {
+      sendData(JSON.stringify({ country, street, subject }));
     }
   }, [tg, country, street, subject]);
 
