@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useTelegram } from "../hooks/useTelegram";
 import { postEvent } from "@telegram-apps/sdk";
+import WebApp from '@twa-dev/sdk';
 
 export function Form() {
   const [country, setCountry] = useState("");
@@ -32,7 +33,8 @@ export function Form() {
     if (!tg) {
       return;
     } else {
-      tg.sendData(JSON.stringify(data));
+      WebApp.sendData(JSON.stringify(data));
+     
     }
 
     postEvent("web_app_data_send", {
