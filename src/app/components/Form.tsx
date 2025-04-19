@@ -30,7 +30,7 @@ export function Form() {
     };
 
     // ТОЛЬКО sendData - postEvent не нужен
-    if (!tg) {
+    if (!WebApp) {
       return;
     } else {
       WebApp.sendData(JSON.stringify(data));
