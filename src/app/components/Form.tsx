@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useTelegram } from '../hooks/useTelegram'
 import WebApp from '@twa-dev/sdk'
-import { retrieveLaunchParams } from '@telegram-apps/sdk'
+import { postEvent, retrieveLaunchParams } from '@telegram-apps/sdk'
 
 export function Form() {
   const [country, setCountry] = useState('')
@@ -31,18 +31,9 @@ export function Form() {
     }
 
     /*  postEvent('web_app_data_send', { data: JSON.stringify(data) }) */
-    console.log(initDataRaw, initData)
+    /*************  ✨ Windsurf Command 🌟  *************/
+    postEvent('web_app_data_send', { data: JSON.stringify(data) })
 
-    WebApp.sendData(JSON.stringify(data))
-
-    /* tg.sendData(JSON.stringify(data)) */
-    // ТОЛЬКО sendData - postEvent не нужен
-    /*   if (!tg) {
-      return
-    } else {
-    } */
-
-    // Очистка полей
     setCountry('')
     setStreet('')
   }
