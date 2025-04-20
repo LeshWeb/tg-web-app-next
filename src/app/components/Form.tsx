@@ -1,79 +1,81 @@
-"use client";
-import { useEffect, useState } from "react";
-import { useTelegram } from "../hooks/useTelegram";
-import { postEvent } from "@telegram-apps/sdk";
+'use client'
+import { useEffect, useState } from 'react'
+import { useTelegram } from '../hooks/useTelegram'
+import WebApp from '@twa-dev/sdk'
+import { retrieveLaunchParams } from '@telegram-apps/sdk'
 
 export function Form() {
-  const [country, setCountry] = useState("");
-  const [street, setStreet] = useState("");
-  const [subject, setSubject] = useState("physical");
-  const tg = useTelegram();
+  const [country, setCountry] = useState('')
+  const [street, setStreet] = useState('')
+  const [subject, setSubject] = useState('physical')
+  const tg = useTelegram()
+  const { initDataRaw, initData } = retrieveLaunchParams()
 
   const onChangeCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCountry(e.target.value);
-  };
+    setCountry(e.target.value)
+  }
 
   const onChangeStreet = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStreet(e.target.value);
-  };
+    setStreet(e.target.value)
+  }
 
   const onChangeSubject = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSubject(e.target.value);
-  };
+    setSubject(e.target.value)
+  }
 
   const onSendData = () => {
     const data = {
       country,
       street,
       subject,
-    };
-
-    // ТОЛЬКО sendData - postEvent не нужен
-    if (!tg) {
-      return;
-    } else {
-      tg.sendData(JSON.stringify(data));
-     
     }
 
-    postEvent("web_app_data_send", {
-      data: JSON.stringify(data),
-    });
+    /*  postEvent('web_app_data_send', { data: JSON.stringify(data) }) */
+    console.log(initDataRaw, initData)
+
+    WebApp.sendData(JSON.stringify(data))
+
+    /* tg.sendData(JSON.stringify(data)) */
+    // ТОЛЬКО sendData - postEvent не нужен
+    /*   if (!tg) {
+      return
+    } else {
+    } */
 
     // Очистка полей
-    setCountry("");
-    setStreet("");
-  };
+    setCountry('')
+    setStreet('')
+  }
 
   useEffect(() => {
-    if (!tg) return;
+    if (!tg) return
 
     tg.MainButton.setParams({
-      text: "Отправить данные",
+      text: 'Отправить данные',
       is_active: true,
       is_visible: true,
-    });
+    })
 
-    tg.onEvent("mainButtonClicked", onSendData);
+    tg.onEvent('mainButtonClicked', onSendData)
 
     return () => {
-      tg.offEvent("mainButtonClicked", onSendData);
-    };
-  }, [tg, onSendData]);
+      tg.offEvent('mainButtonClicked', onSendData)
+    }
+  }, [tg, onSendData])
 
   useEffect(() => {
-    if (!tg) return;
+    if (!tg) return
 
     if (street && country) {
-      tg.MainButton.show();
+      tg.MainButton.show()
     } else {
-      tg.MainButton.hide();
+      tg.MainButton.hide()
     }
-  }, [tg, street, country]);
+  }, [tg, street, country])
 
   return (
     <div className="flex flex-col w-full p-5">
-      <h3 className="text-center mb-4">Введите данные</h3>
+      <h3 className="text-center mb-4">пох</h3>
       <input
         className="w-full p-2 mt-2 border rounded"
         type="text"
@@ -97,5 +99,5 @@ export function Form() {
         <option value="legal">Юридическое лицо</option>
       </select>
     </div>
-  );
+  )
 }
