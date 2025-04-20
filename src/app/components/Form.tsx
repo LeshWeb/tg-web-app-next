@@ -1,15 +1,13 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { useTelegram } from '../hooks/useTelegram'
-import WebApp from '@twa-dev/sdk'
-import { postEvent, retrieveLaunchParams } from '@telegram-apps/sdk'
+import { postEvent } from '@telegram-apps/sdk'
 
 export function Form() {
   const [country, setCountry] = useState('')
   const [street, setStreet] = useState('')
   const [subject, setSubject] = useState('physical')
   const tg = useTelegram()
-  const { initDataRaw, initData } = retrieveLaunchParams()
 
   const onChangeCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCountry(e.target.value)
